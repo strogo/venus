@@ -6,13 +6,13 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"github.com/filecoin-project/venus/pkg/types"
 
 	files "github.com/ipfs/go-ipfs-files"
 
 	"github.com/filecoin-project/go-address"
 	"github.com/filecoin-project/venus/app/node"
 	"github.com/filecoin-project/venus/pkg/crypto"
-	"github.com/filecoin-project/venus/pkg/types"
 	cmds "github.com/ipfs/go-ipfs-cmds"
 )
 
@@ -124,9 +124,8 @@ var balanceCmd = &cmds.Command{
 		if err != nil {
 			return err
 		}
-		return re.Emit(balance)
+		return re.Emit(bytes.NewBufferString(types.FilString(balance)))
 	},
-	Type: &types.AttoFIL{},
 }
 
 // WalletSerializeResult is the type wallet export and import return and expect.

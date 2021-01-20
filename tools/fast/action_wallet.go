@@ -45,7 +45,7 @@ func (f *Filecoin) AddressLookup(ctx context.Context, addr address.Address) (pee
 func (f *Filecoin) WalletBalance(ctx context.Context, addr address.Address) (types.AttoFIL, error) {
 	var balance types.AttoFIL
 	if err := f.RunCmdJSONWithStdin(ctx, nil, &balance, "venus", "wallet", "balance", addr.String()); err != nil {
-		return types.ZeroAttoFIL, err
+		return types.ZeroFIL, err
 	}
 	return balance, nil
 }
