@@ -65,7 +65,7 @@ func (chainInfoAPI *ChainInfoAPI) ProtocolParameters(ctx context.Context) (*Prot
 	}
 
 	var supportedSectors []SectorInfo
-	for proof, _ := range miner0.SupportedProofTypes {
+	for proof := range miner0.SupportedProofTypes {
 		size, err := proof.SectorSize()
 		if err != nil {
 			return nil, xerrors.Wrap(err, "could not retrieve network name")
